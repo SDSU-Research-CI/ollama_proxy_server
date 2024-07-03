@@ -5,11 +5,11 @@ RUN apt update \
     && apt install -y --no-install-recommends --no-install-suggests git apache2 \
     && apt autoremove -y --purge \
     && apt clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && git clone https://github.com/ParisNeo/ollama_proxy_server.git
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+COPY . /src/app
 # Change working directory to cloned git repository
-WORKDIR ollama_proxy_server
+WORKDIR /src/app/
 
 # Install all needed requirements
 RUN pip3 install -e .
