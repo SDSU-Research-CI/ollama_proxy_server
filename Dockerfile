@@ -14,9 +14,11 @@ WORKDIR ollama_proxy_server
 # Install all needed requirements
 RUN pip3 install -e .
 
+## Note: Not doing this because it is insecure when publishing an image to a container registry
+
 # Copy config.ini and authorized_users.txt into project working directory
-COPY config.ini .
-COPY authorized_users.txt .
+# COPY config.ini .
+# COPY authorized_users.txt .
 
 # Start the proxy server as entrypoint
 ENTRYPOINT ["ollama_proxy_server"]
